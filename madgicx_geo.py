@@ -3,6 +3,7 @@
 import sys
 import unittest
 import requests
+from exceptions import FileNotFoundException
 
 
 def get_formatted_result(**to_print):
@@ -51,9 +52,8 @@ def read_file(file_name):
             for line in file:
                 result.append(line)
         return result
-    except FileNotFoundError:
-        print('File not found')
-        exit(0)
+    except OSError as e:
+        raise FileNotFoundException('File {0} is not found'.format(e.filename))
 
 
 def print_help(script_name='madgicx_geo.py'):
@@ -99,9 +99,12 @@ def main():
 
         cities = ' '.join([str(x).title() for x in sys.argv[1:]]).split(', ') if sys.argv[1] != '-f' else \
             [city.title() for city in read_file(sys.argv[2])]
-    except IndexError :
+    except FileNotFoundException as fe:
+        print(fe.message)
         print_help()
-        exit(0)
+    except Exception as ex:
+        print(ex)
+        print_help()
 
     for city in cities:
         print('=> {0}'.format(city))
