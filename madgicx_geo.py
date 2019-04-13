@@ -88,15 +88,20 @@ def run_tests():
 def main():
 
     # Get user input
-    if sys.argv[1].lower() == 'test':
-        run_tests()
-        exit(0)
-    if sys.argv[1].lower() == '-h' or sys.argv[1].lower() == '-help':
+    cities = []
+    try:
+        if sys.argv[1].lower() == 'test':
+            run_tests()
+            exit(0)
+        if sys.argv[1].lower() == '-h' or sys.argv[1].lower() == '-help':
+            print_help()
+            exit(0)
+
+        cities = ' '.join([str(x).title() for x in sys.argv[1:]]).split(', ') if sys.argv[1] != '-f' else \
+            [city.title() for city in read_file(sys.argv[2])]
+    except IndexError :
         print_help()
         exit(0)
-
-    cities = ' '.join([str(x).title() for x in sys.argv[1:]]).split(', ') if sys.argv[1] != '-f' else \
-        [city.title() for city in read_file(sys.argv[2])]
 
     for city in cities:
         print('=> {0}'.format(city))
