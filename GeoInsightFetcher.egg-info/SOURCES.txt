@@ -1,0 +1,11 @@
+README.md
+setup.py
+GeoInsightFetcher.egg-info/PKG-INFO
+GeoInsightFetcher.egg-info/SOURCES.txt
+GeoInsightFetcher.egg-info/dependency_links.txt
+GeoInsightFetcher.egg-info/entry_points.txt
+GeoInsightFetcher.egg-info/top_level.txt
+app/__init__.py
+app/exceptions.py
+app/madgicx_geo.py
+app/test_madgicx_geo.py

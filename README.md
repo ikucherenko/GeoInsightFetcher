@@ -10,7 +10,7 @@ Requirements
 Installation
 ------------
 
-    $ pip install -r requirements.txt
+    $ python3 setyp.py install
    
    
  Usage
@@ -25,3 +25,9 @@ or
     
     
 for help
+
+
+ Tests
+-----
+
+    $ python3 setup.py test
